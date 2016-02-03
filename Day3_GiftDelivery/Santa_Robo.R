@@ -10,19 +10,19 @@ day3_dupl_delivery <- function(str,fullLen){
   curr_x=ceiling(moves/2)+1
   curr_y=ceiling(moves/2)+1
   
-  for(move in 1:moves) { #looping through each move
-    if(substr(str,move,move)=="^"){
-      field[curr_x,curr_y+1]=field[curr_x,curr_y+1]+1
-      curr_y=curr_y+1
-    } else if(substr(str,move,move)=="v"){
-      field[curr_x,curr_y-1]=field[curr_x,curr_y-1]+1
-      curr_y=curr_y-1
-    } else if(substr(str,move,move)==">"){
+  for(move in 1:nchar(str)) { #looping through each move
+    if(substr(str,move,move)=="v"){
       field[curr_x+1,curr_y]=field[curr_x+1,curr_y]+1
       curr_x=curr_x+1
-    } else {
+    } else if(substr(str,move,move)=="^"){
       field[curr_x-1,curr_y]=field[curr_x-1,curr_y]+1
       curr_x=curr_x-1
+    } else if(substr(str,move,move)==">"){
+      field[curr_x,curr_y+1]=field[curr_x,curr_y+1]+1
+      curr_y=curr_y+1
+    } else {
+      field[curr_x,curr_y-1]=field[curr_x,curr_y-1]+1
+      curr_y=curr_y-1
     }
   }
   
